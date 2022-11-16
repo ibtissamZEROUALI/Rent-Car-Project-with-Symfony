@@ -1,0 +1,82 @@
+{% extends "back/base.html.twig" %}
+{% block Contenttitle %}
+	Modifier état vehicule en EN PANNE
+{% endblock  %}
+{% block Content %}
+	<!-- Font special for pages-->
+	{% block style %}
+		<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+		<!-- Main CSS-->
+		<link href="{{asset('bundle/styleFormPanne/css/main.css')}}" rel="stylesheet" media="all">
+
+	{% endblock %}
+
+	<body>
+		<div class="page-wrapper p-t-100 p-b-50 rounded" style="background: -webkit-linear-gradient( 136deg, rgb(254,225,64) 0%, rgb(250,112,154) 100%);">
+
+
+			<div class="wrapper wrapper--w900 ">
+				<div class="card card-6 border-tansparent">
+
+					<div class="card-heading">
+						<h2 class="title">Modifier état vehicule en EN PANNE</h2>
+					</div>
+					<div class="card-body">
+						<form method="POST">
+
+							<div class="form-row">
+							</div>
+							<div class="form-row">
+								<div class="name">Statut Panne</div>
+								<div class="value">
+									<select class="form-control" name="StatusPanne">
+										<option value="---">----------</option>
+										<option value="Non Réglé">Non réglé</option>
+										<option value="En cours">En cours</option>
+										<option value="Réglé">Réglé</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="name">Type Panne</div>
+								<div class="value">
+									<div class="input-group">
+										<input class="input--style-6" type="TypePanne" value="{{panne.TypePanne}}" name="TypePanne" placeholder="Enter type de panne..">
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="name">Remarque</div>
+								<div class="value">
+									<div class="input-group">
+										<textarea class="textarea--style-6" name="Remarque" value="{{panne.Remarque}}" placeholder="Remarque..."></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button class="btn btn--radius-2 btn--blue-2" type="submit">Submit</button>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+	</body>
+	<!-- This templates was made by Colorlib (https://colorlib.com) -->
+	{% block js %}
+		<!-- Jquery JS-->
+		<script src="{{asset('bundle/styleFormPanne/vendor/jquery/jquery.min.js')}}"></script>
+
+		<!-- Main JS-->
+		<script src="{{asset('bundle/styleFormPanne/js/global.js')}}"></script>
+
+
+	{% endblock %}
+
+
+{% endblock  %}

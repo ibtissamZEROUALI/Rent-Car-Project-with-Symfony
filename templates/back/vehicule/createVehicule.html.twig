@@ -1,0 +1,147 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+	<div class="w-4/5 m-auto text-center">
+		<div class="py-12 border-b border-gray-200">
+			<h1 class="text-6xl">
+				Ajouter vehicule
+			</h1>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block Content %}
+<!-- Main content -->
+<section class="content">
+	<div class="container-fluid">
+		<div
+			class="row">
+			<!-- left column -->
+			<div
+				class="col">
+				<!-- general form elements -->
+				<div class="card card-warning">
+					<div class="card-header">
+						<h3 class="card-title">Ajouter Vehicule en Stock</h3>
+					</div>
+					<!-- /.card-header -->
+					<!-- form start -->
+					<form method="post" action="CreateVehicule" enctype="multipart/form-data">
+						<div class="card-body">
+							<div class="row ">
+								<div class="col">
+									<div class="form-group">
+										<label for="Titre">Titre</label>
+										<input type="text" name="Titre" class="form-control" required id="titre" placeholder="Enter un titre">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="Titre">Model Year</label>
+										<input type="text" name="ModelYear" class="form-control" required onclick="ToNumeric()" id="titre" placeholder="Enter année">
+									</div>
+									<div class="form-group">
+										<label for="Marque">Marque</label>
+										
+										<select class="form-control" required name="Marque"><option value="---">-------------</option>
+										{% for marque in marques %}
+											<option  value="{{marque.id}}">{{marque.Marque}}</option>
+										{% endfor %}
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="Titre">Capacité</label>
+										<input type="text" name="Capacite" required class="form-control"  onclick="ToNumeric()" placeholder="Enter capacite">
+									</div>
+									<div class="form-group">
+										<label for="Type">Type</label>
+										<select class="form-control" required name="Type">
+										<option value="---">-------------</option>
+											{% for type in types %}
+												<option  value="{{type.id}}">{{type.TypeVehicule}}</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<div class="form-group">
+										<label for="Description">Description</label>
+										<textarea type="text" required name="Description" class="form-control" id="Description" placeholder="Description..."></textarea>
+									</div>
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+												<label for="PrixDay">Prix par jour</label>
+												<input type="text" name="PrixDay" required placeholder="MAD" onclick="ToNumeric()" class="form-control">
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-group">
+												<label for="PrixDay">Model</label>
+												<input type="text" name="Model" required class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+												<label for="Statut">Statut</label>
+												<select class="form-control" required name="Statut">
+													<option value="---">-------------</option>
+													<option value="Disponible">Disponible</option>
+													<option value="En location">En location</option>
+													<option value="Réservé">Réservé</option>
+													<option value="En panne">En panne</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-group">
+												<label for="DateRegistration">Matricul</label>
+												<input type="text" name="matricul" placeholder="xx-xxx-xxx x"  required class="form-control">
+											</div>
+										</div>
+										
+									</div>							
+									<div class="form-group">
+										<label for="DateRegistration">Date d'enregistrement</label>
+										<input type="date" name="DateEnregistrement"  required class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="DateRegistration">Photo</label>
+										<input type="file" name="Image" required class="form-control">
+									</div>
+
+								</div>
+							</div>								
+						</div>	
+						<div class="card-footer">
+							<button type="submit" class="btn btn-primary text-black">Submit</button>
+						</div>
+					</form>
+				</div>
+				<!-- /.card -->
+
+			</div>
+			<!--/.col (left) -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container-fluid -->
+</section>
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,127 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+	Ajouter un utilisateur
+{% endblock %}
+
+
+{% block Content %}
+<section class="content">
+	<div class="container-fluid">
+
+				<!-- jquery validation -->
+				<div class="card card-primary">
+					<div class="card-header">
+						<h3 class="card-title">Nouveau
+							<small>utilisateur</small>
+						</h3>
+					</div>
+					<div class="row ">
+						<div class="col-6">
+							<div class="form-group">
+								{% if erreur is defined %}
+								<div class="alert alert-danger alert-dismissible">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<h4>
+										<i class="icon fa fa-ban"></i>
+										Erreur !!</h4>
+									{{ erreur }}
+								</div>
+								{% endif %}
+								{% if success is defined %}
+									<div class="alert alert-success alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+										<h4>
+											<i class="icon fa fa-check"></i>
+											Succés
+										</h4>
+										{{ success }}
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					<!-- /.card-header -->
+					<!-- form start -->
+					<form id="quickForm" method="post" action="createUser">
+						<div class="card-body">
+							<div class="form-group">
+								<label for="Nom">Nom</label>
+								<input type="text" name="Nom" class="form-control" id="Nom" required placeholder="Entrer Nom">
+							</div>
+							<div class="form-group">
+								<label for="Prenom">Prenom</label>
+								<input type="text" name="Prenom" class="form-control" id="Prenom" required placeholder="Entrer Prenom">
+							</div>
+							<div class="form-group">
+								<label for="Email">Email</label>
+								<input type="email" name="Email" class="form-control" id="Email" required placeholder="Entrer Email">
+							</div>
+							<div class="form-group">
+								<label for="Password">Password</label>
+								<input type="password" name="Password" class="form-control" id="Password" required placeholder="Entrer Password">
+							</div>
+							<div class="form-group">
+								<label for="Cin">Cin</label>
+								<input type="text" name="Cin" class="form-control" id="Cin" required placeholder="Entrer Cin">
+							</div>
+							<div class="form-group">
+								<label for="Adresse">Adresse</label>
+								<input type="text" name="Adresse" class="form-control" id="Adresse" required placeholder="Entrer Adresse">
+							</div>
+							<div class="form-group">
+								<label for="DateNaissance">Date Naissance</label>
+								<input type="Date" name="DateNaissance" class="form-control" id="DateNaissance" required placeholder="Entrer DateNaissance">
+							</div>
+							<div class="form-group">
+								<label  for="Sexe">Sexe</label>
+								<select class="form-control" name="Sexe">
+									<option value="Feminin">Feminin</option>
+									<option value="Masculin">Masculin</option>
+								</select>
+							</div>
+							<!--<div class="form-group">
+								<label for="Photo">Photo</label>
+								<input type="file" name="Photo" class="form-control-file" id="Photo">
+							</div>-->
+							<div class="form-group">
+								<label for="Role" class="text-info">
+									Affecter Permisions
+								</label>
+								{% for role in roleList %}
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" name="{{role.id}}" id="{{role.id}}" value="">
+										<label class="form-check-label" for="checkbox{{role.id}}">
+											{{role.role}}
+										</label>
+									</div>
+								{% endfor %}
+							</div>
+
+
+						</div>
+						<!-- /.card-body -->
+						<div class="card-footer">
+							<button type="submit" class="btn btn-primary bg-warning">Submit</button>
+						</div>
+					</form>
+				</div>
+				<!-- /.card -->
+			</div>
+			<!--/.col (left) -->
+			<!-- right column -->
+			<div class="col-md-6"></div>
+			<!--/.col (right) -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container-fluid -->
+</section>
+<script src="{{asset('loginClient/js/jquery.min.js')}}"></script>
+<script src="{{asset('loginClient/js/popper.js')}}"></script>
+<script src="{{asset('loginClient/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('loginClient/js/main.js')}}"></script>
+
+
+{% endblock %}

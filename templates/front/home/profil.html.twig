@@ -1,0 +1,185 @@
+{% extends "front/base.html.twig" %}
+{% block body %}
+
+	<div class="container-xxl py-5 emp-profile shadow-lg p-3 mb-5 rounded">
+
+		<div class="container">
+			<div class="row g-5">
+
+				<form method="post">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="image">
+								{% if client.Sexe == 'Feminin' %}
+									<img src="{{asset('images/logoFemme.jpg')}}" class="shadow-sm rounded" alt="Femmale logo"/>
+								{% elseif client.Sexe == 'Masculin'  %}
+                                    <img src="{{asset('images/logoHomme.jpg')}}" class="shadow-sm rounded" alt="male logo"/>
+								{% endif %}
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="profile-head">
+								<h5>
+									{{client.Prenom|capitalize}}'s Profil
+								</h5>
+								<h6>
+									Costumer at ITSSAM RentCar
+								</h6>
+								<p class="proile-rating">
+									<i class="fa fa-star"></i>
+								</p>
+								<ul class="nav nav-tabs" id="myTab" role="tablist">
+									<li class="nav-item">
+										<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<a href="{{path("home")}}" class="btn btn-warning shadow-lg" style="border-radius: 30px;">
+								<i class="fa fa-arrow-left" aria-hidden="true"></i>
+								Back home page
+							</a>
+						</div>
+					</div>
+					<div class="row mt-4">
+						<div class="col-md-4">
+							<div class="profile-work ">
+								<h3>Your Actions</h3>
+								<div class="m-4">
+								{% for reservation in reservations %}
+									{% if reservation.valide == 0 %}
+										<h4 id="pend">Reservation pending</h4>
+										<p><b>From </b> {{reservation.FromDate|date("H-M-D")}} <b>To</b> {{reservation.ToDate|date("H-M-D")}}</p>
+										<p><b>Vehicle </b> {{reservation.IdVehicule.Titre}}</p>
+										<p><b>Total </b>  {{reservation.Remise}} DH</p>
+									{% endif %}
+
+									{% if reservation.valide == 1 %}
+										<h4 id="rent">Rent</h4>
+										<p><b>From </b> {{reservation.FromDate|date("H-M-D")}} <b>To</b> {{reservation.ToDate|date("H-M-D")}}</p>
+										<p><b>Vehicle </b> {{reservation.IdVehicule.Titre}}</p>
+										<p><b>Total </b>  {{reservation.Remise}} DH</p>
+									{% endif %}
+
+									{% if reservation.valide == 2 %}
+										<h4>Refused</h4>
+										<p><b>From</b> {{reservation.FromDate|date("H-M-D")}} <b>To</b> {{reservation.ToDate|date("H-M-D")}}</p>
+										<p><b>Vehicle</b>{{reservation.IdVehicule.Titre}}</p>
+										<p class="text-danger"><b>Motif</b><b > {{reservation.Note}}</b></p>
+									{% endif %}
+								{% endfor %}
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="tab-content profile-tab" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+									<div class="row ">
+										<div class="col-md-6">
+											<label style="font-weight : bolder;">Name</label>
+										</div>
+										<div class="col-md-6">
+											<p>{{client.Nom}}
+												{{client.Prenom}}</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<label style="font-weight : bolder;">Email</label>
+										</div>
+										<div class="col-md-6">
+											<p>{{client.Email}}</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<label style="font-weight : bolder;">Phone</label>
+										</div>
+										<div class="col-md-6">
+											<p>0699552244</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<label style="font-weight : bolder;">Adresse</label>
+										</div>
+										<div class="col-md-6">
+											<p>{{client.Adresse}}</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<label style="font-weight : bolder;">Birth</label>
+										</div>
+										<div class="col-md-6">
+											<p>{{client.DateNaissance|date("H-M-D")}}</p>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<label style="font-weight : bolder;">Sexe</label>
+										</div>
+										<div class="col-md-6">
+											<p>{{client.Sexe}}</p>
+										</div>
+									</div>
+
+								</div>
+								<div class="row mt-4">
+									<div class="col">
+										<a href="{{path('editProfil',{"id" : client.id})}}" class="btn btn-info shadow-lg p-3 bg-white " style="border-radius: 10px;">
+											Edit Profil</a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+
+	<style>
+		.emp-profile {
+			padding: 3%;
+			margin-top: 3%;
+			margin-bottom: 3%;
+			border-radius: 0.5rem;
+			background: #F0F8FF;
+		}
+		h4,
+		h5 {
+			text-shadow: 1px 1px 1px red;
+			font-weight: bolder;
+			font-size: 120%;
+		}
+		#pend{
+			text-shadow: 1px 1px 1px yellow;
+			font-weight: bolder;
+			font-size: 120%;
+		}
+		#rent{
+			text-shadow: 1px 1px 1px green;
+			font-weight: bolder;
+			font-size: 120%;
+		}
+		.fa-star {
+			color: #DAA520;
+		}
+        img{
+ max-width: 50%;
+  height: auto; 
+        }
+		b{
+			font-style: bolder;
+			margin-right: 3px;
+		}
+	</style>
+{% endblock %}

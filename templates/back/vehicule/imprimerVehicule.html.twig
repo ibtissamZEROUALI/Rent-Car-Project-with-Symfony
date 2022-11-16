@@ -1,0 +1,68 @@
+{% block Content %}
+	<div class="row d-flex justify-content-between mb-4">
+		<h1 align="center">Table des vehicules</h1><hr>
+	</div>
+	<table class="styled-table">
+		<thead class="col-sm-4 text-dark font-weight-bold">
+			<tr>
+				<td>ID Vehicule</td>
+				<td>Marque</td>
+				<td>Type</td>
+				<td>Statut</td>
+				<td>Capacite</td>
+				<td>Date d'enregistrement</td>
+			</tr>
+		</thead>
+		<tbody class="col-sm-8 font-weight-normal">
+			{% for vehicule in vehicules %}
+				<tr>
+					<td>{{vehicule.id}}</td>
+					<td>{{vehicule.IdMarque.Marque}}</td>
+					<td>{{vehicule.IdTypeVehicule.TypeVehicule}}</td>
+					<td>{{vehicule.StatusVehicule}}</td>
+					<td>{{vehicule.Capacity}}</td>
+					<td>{{vehicule.DateRegistration|date('Y-m-d H:i:s')}}</td>
+				</tr>
+			{% endfor %}
+
+		</tbody>
+	</table>
+{% endblock %}
+<style>
+	.h1 {
+		color: yellow;
+	}
+	.styled-table {
+		border-collapse: collapse;
+		margin: 25px 0;
+		font-size: 0.9em;
+		font-family: sans-serif;
+		min-width: 400px;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	}
+
+	.styled-table thead tr {
+		background-color: #009879;
+		color: #ffffff;
+		text-align: left;
+	}
+	.styled-table th,
+	.styled-table td {
+		padding: 12px 15px;
+	}
+	.styled-table tbody tr {
+		border-bottom: 1px solid #dddddd;
+	}
+
+	.styled-table tbody tr:nth-of-type(even) {
+		background-color: #f3f3f3;
+	}
+
+	.styled-table tbody tr:last-of-type {
+		border-bottom: 2px solid #009879;
+	}
+	.styled-table tbody tr.active-row {
+		font-weight: bold;
+		color: #009879;
+	}
+</style>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>CONEXION ADMIN</title>
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Font Awesome -->
+		<link
+		rel="stylesheet" href="{{ asset('back/bundle/plugins/fontawesome-free/css/all.min.css') }}">
+		<!-- Ionicons -->
+		<link
+		rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		<!-- icheck bootstrap -->
+		<link
+		rel="stylesheet" href="{{ asset('back/bundle/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+		<!-- Theme style -->
+		<link
+		rel="stylesheet" href="{{ asset('back/bundle/dist/css/adminlte.min.css') }}">
+		<!-- Google Font: Source Sans Pro -->
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	</head>
+	<body class="hold-transition login-page">
+		<div class="login-box">
+			<div class="login-logo">
+				<a href="">
+					<b>Login</b>
+				</a>
+			</div>
+			<!-- /.login-logo -->
+			{% if response is defined and response!=""%}
+				<div class="alert alert-danger">
+					{{response}}
+				</div>
+			{% endif %}
+			<div class="card">
+				<div class="card-body login-card-body">
+					<p class="login-box-msg">Connexion</p>
+
+					<form method="post">
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" name="login" placeholder="Email">
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-envelope"></span>
+								</div>
+							</div>
+						</div>
+						<div class="input-group mb-3">
+							<input type="password" class="form-control" name="pass" placeholder="Mot de passe">
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-lock"></span>
+								</div>
+							</div>
+						</div>
+						<div
+							class="row">
+							<!-- /.col -->
+							<div class="col-12">
+								<button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+							</div>
+							<!-- /.col -->
+						</div>
+					</form>
+				</div>
+				<!-- /.login-card-body -->
+			</div>
+		</div>
+		<!-- /.login-box -->
+
+		<!-- jQuery -->
+		<script src="{{ asset('back/bundle/dist/img/AdminLTELogo.png') }}../../plugins/jquery/jquery.min.js"></script>
+		<!-- Bootstrap 4 -->
+		<script src="{{ asset('back/bundle/ ') }}../../plugins/bootstrap/js/bootstrap.back/bundle.min.js"></script>
+		<!-- AdminLTE App -->
+		<script src="{{ asset('back/bundle/ ') }}../../dist/js/adminlte.min.js"></script>
+
+	</body>
+</html>
+

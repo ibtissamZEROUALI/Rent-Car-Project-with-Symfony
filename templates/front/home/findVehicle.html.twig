@@ -1,0 +1,106 @@
+{% extends "front/base.html.twig" %}
+{% block style %}
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="{{asset('reservation/css/style.css')}}"/>
+{% endblock %}
+
+{% block body %}
+<div id="booking" class="section bg-image" 
+     style="background-image: url('../reservation/img/background.jpg');
+            height: 100vh">
+
+	<div class="section-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7 col-md-push-5">
+					<div class="booking-cta">
+						<h1>Make your reservation</h1>
+						<p>Search hundreds of rental vehicles at once that matches your requirement for better expriences in Morocco</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-md-pull-7">
+					<div class="booking-form">
+						<form method="post">
+						<div class="row">
+							<div class="col">
+								 <div class="form-group">
+									{% if erreur is defined %}
+									<div class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+										<h4>
+											<i class="icon fa fa-ban"></i>
+											Erreur !!</h4>
+										{{ erreur }}
+									</div>
+									{% endif %}
+									{% if success is defined %}
+										<div class="alert alert-success alert-dismissible">
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+											<h4>
+												<i class="icon fa fa-check"></i>
+												Succés
+											</h4>
+											{{ success }}
+										</div>
+									{% endif %}
+                                </div>
+							</div>
+						</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<span class="form-label">From Date</span>
+										<input class="form-control" type="date" name="FromDate" required>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<span class="form-label"T>To Date</span>
+										<input class="form-control" type="date" name="ToDate" required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<span class="form-label">Brand</span>
+										<select class="form-control" name="Marque">
+										<option value="AllBrand">All brands</option>
+											{% for marque in marques %}
+												<option  value="{{marque.id}}">{{marque.Marque}}</option>
+											{% endfor %}
+										</select>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<span class="form-label">Type</span>
+										<select class="form-control" name="Type">
+										<option value="AllType">All Types</option>
+											{% for type in types %}
+												<option  value="{{type.id}}">{{type.TypeVehicule}}</option>
+											{% endfor %}
+										</select>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-btn">
+								<button type="submit" class="submit-btn">Check available vehicles</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="{{asset('bookV/js/jquery.min.js')}}"></script>
+<script src="{{asset('bookV/js/popper.js')}}"></script>
+<script src="{{asset('bookV/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('bookV/js/jquery.validate.min.js')}}"></script>
+<script src="{{asset('bookV/js/main.js')}}"></script>
+
+		
+{% endblock %}

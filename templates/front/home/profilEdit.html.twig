@@ -1,0 +1,148 @@
+{% extends "front/base.html.twig" %}
+{% block body %}
+<div class="container-xxl py-5 emp-profile shadow-lg p-3 mb-5 rounded bg-light">
+	<div class="container bootstrap snippets bootdey">
+		<h1 class="text-info">Edit Profile</h1>
+		<hr>
+		<div
+			class="row">
+			<!-- left column -->
+			<div class="col-md-3">
+				<div class="text-center">
+					<div class="image">
+						{% if client.Sexe == 'Masculin' %}
+							<img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="avatar img-circle img-thumbnail" alt="avatar">
+							<h6>Photo gender...</h6>
+						{% elseif client.Sexe == 'Feminin'  %}
+							<img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="avatar img-circle img-thumbnail" alt="avatar">
+							<h6>Photo gender</h6>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+			<!-- edit form column -->
+			<div class="col-md-9 personal-info">
+				
+				<h2 >Personal info</h2>
+
+				<form class="form-horizontal" role="form" method="post">
+				<div class="row ">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            {% if erreur is defined %}
+                                            <div class="alert alert-danger alert-dismissible">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                <h4>
+                                                    <i class="icon fa fa-ban"></i>
+                                                    Erreur !!</h4>
+                                                {{ erreur }}
+                                            </div>
+                                            {% endif %}
+                                            {% if success is defined %}
+                                                <div class="alert alert-success alert-dismissible">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                    <h4>
+                                                        <i class="icon fa fa-check"></i>
+                                                        Succés
+                                                    </h4>
+                                                    {{ success }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">First name:</label>
+						<div class="col-lg-8">
+							<input class="form-control border  rounded " type="text" name="Prenom" required value="{{client.Prenom}}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Last name:</label>
+						<div class="col-lg-8">
+							<input class="form-control border rounded" type="text" name="Nom" required value="{{client.Nom}}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label ">Cin:</label>
+						<div class="col-lg-8">
+							<input class="form-control border rounded" type="text" name="Cin" required value="{{client.Cin}}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Email:</label>
+						<div class="col-lg-8">
+					<input class="form-control border rounded" type="email" name="Email" required value="{{client.Email}}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Password:</label>
+						<div class="col-lg-8">
+							<input class="form-control border rounded" type="password" name="Password" required value="{{client.Password}}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Phone:</label>
+						<div class="col-lg-8">
+							<input class="form-control border rounded" type="tel" name="telephone" required value="{{client.Phone}}">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Adresse:</label>
+						<div class="col-lg-8">
+							<textarea class="form-control border rounded" type="text" name="Adresse" required >{{client.Adresse}}</textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Birh Date:</label>
+						<div class="col-lg-8">
+							<input class="form-control border rounded" type="Date" name="DateNaissance" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="Sexe" class="col-lg-3 control-label">Sexe</label>
+							<div class="col-lg-4">
+							<select class="form-control border rounded bg-gradient-blue" name="Sexe" required>
+								<option value="Feminin">Feminin</option>
+								<option value="Masculin">Masculin</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-3">
+							<button type="submit" class="btn btn-warning mt-4 p-3 shadow-lg text-black" style="border-radius: 20px; width:100%; ">Valide</button>
+						</div>	
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>
+</div>
+<style>
+.emp-profile{margin-top:20px;}
+
+.avatar{
+width:200px;
+height:200px;
+}
+.form-group
+{
+	margin-top: 10px;
+}
+label{
+	font-weight: bold;
+}
+input{
+	margin-top: 5px;
+} img{
+ max-width: 50%;
+  height: auto; 
+        }
+	button{
+
+	}
+</style>
+{% endblock %}

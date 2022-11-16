@@ -1,0 +1,228 @@
+table td .delete{
+    font-size: 15px;
+    color:red;
+}
+
+table td .delete:hover{
+    cursor: pointer;
+    color:#C90000;
+}
+
+.numberStyle{
+    width: 150px;
+}
+
+.etat{
+    padding:5px;
+    color:#ffffff;
+    font-size: 12px;
+    border-radius: 3px;
+    width:auto;
+    margin-bottom: 3px;
+}
+
+/*------------POPUP -----------*/
+
+.well {
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display:none;
+    margin:1em;
+    background: white;
+    width:60%;
+    padding: 5px;
+}
+.fulltable {
+    max-width: 100%;
+    overflow: auto;
+}
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+.lineheight {
+    line-height: 3em;
+}
+
+
+#fadeandscale, #fadeandscale2 {
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+}
+.popup_visible #fadeandscale, .popup_visible #fadeandscale2 {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+#fadeandscale h1, #fadeandscale2 h1{
+    height: 40px;
+    line-height: 40px;
+    color:#0088CC;
+    border-bottom: 1px dotted #0088CC;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.logo{
+    width:200px;
+    max-height: 200px;
+    height: auto;
+    border: 1px solid #01A9DB;
+    border-radius: 5px;
+}
+.logo img{
+    width:100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+/*-------------------------*/
+
+/* styles de base si JS est activÃ© */
+.js .input-file-container {
+    position: relative;
+    width: 95%;
+
+}
+.js .input-file-trigger {
+    display: block;
+    /*padding: 14px 45px;*/
+    /*background: #39D2B4;*/
+    background: #01A9DB;
+    color: #fff;
+    font-size: 16px;
+    transition: all .4s;
+    cursor: pointer;
+    height:50px;
+    border-radius: 5px;
+    line-height: 50px;
+    text-align: center;
+}
+.js .input-file {
+    position: absolute;
+    top: 0; left: 0;
+    width: 225px;
+    padding: 14px 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* quelques styles d'interactions */
+.js .input-file:hover + .input-file-trigger,
+.js .input-file:focus + .input-file-trigger,
+.js .input-file-trigger:hover,
+.js .input-file-trigger:focus {
+    background: #34495E;
+    color: #39D2B4;
+}
+
+/* styles du retour visuel */
+.file-return {
+    margin: 0;
+}
+.file-return:not(:empty) {
+    margin: 1em 0;
+}
+.js .file-return {
+    font-style: italic;
+    font-size: .9em;
+    font-weight: bold;
+}
+/* on complÃ¨te l'information d'un contenu textuel
+   uniquement lorsque le paragraphe n'est pas vide */
+.js .file-return:not(:empty):before {
+    content: "Image : ";
+    font-style: normal;
+    font-weight: normal;
+}
+#selectedFiles{
+    width: 99%;
+    height: auto;
+}
+#selectedFiles img{
+    display: inline-block;
+    margin-right: 10px;
+
+}
+
+/*----------------*/
+
+.input_hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+
+#templ label {
+    display: inline-block;
+    cursor: pointer;
+    -moz-box-shadow: 0px 00px 5px 0px #cfcfcf;
+    -webkit-box-shadow: 0px 00px 5px 0px #cfcfcf;
+    -o-box-shadow: 0px 00px 5px 0px #cfcfcf;
+    box-shadow: 0px 00px 5px 0px #cfcfcf;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=NaN, Strength=5);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.selected-rad {
+    border : 2px solid #0088cc;
+}
+
+#templ label:hover {
+    border : 1px solid #00BFFF;
+}
+
+#templ label img {
+    padding: 3px;
+}
+
+#boxMarque{
+    margin-top:20px;
+    width:250px;
+    height:250px;
+    border:1px solid #ccc;
+    /*box-shadow: 0 0 5px #888;*/
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+    line-height:250px;
+}
+#boxMarque img{
+    max-width: 245px;
+    max-height: 245px;
+    width: auto;
+    height: auto;
+}
+.boxDelete{
+    height:30px;
+    width:30px;
+    float:right;
+    border:1px solid #ccc;
+    border-radius:3px;
+    background-color:#B40431;
+    color:white;
+    padding:5px;
+    position: absolute;
+    line-height:20px !important;
+}
+
+.boxDelete:hover{
+    cursor:pointer;
+    background-color:#DF013A;
+    -webkit-transition: background-color 0.5s;
+    -moz-transition:    background-color 0.5s;
+    -ms-transition:     background-color 0.5s;
+    -o-transition:      background-color 0.5s;
+    transition:         background-color 0.5s;
+}

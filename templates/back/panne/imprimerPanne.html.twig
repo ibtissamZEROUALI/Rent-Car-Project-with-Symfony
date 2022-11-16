@@ -1,0 +1,76 @@
+{% block Content %}
+	<h1 align="center">Liste des vehicules en panne</h1><hr>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card card-light">
+				<!-- /.card-header -->
+				<div class="card-body table-responsive p-0">
+					<table class="styled-table">
+	                	<thead class="col-sm-4 text-dark font-weight-bold">
+						<tr>
+							<th>ID Vehicule</th>
+							<th>Type Panne</th>
+                            <th>Status Panne</th>
+                            <th>Remarque</th>
+						</tr>
+					</thead>
+	            	<tbody class="col-sm-8 font-weight-normal">
+					{% for panne in pannes %}
+
+						<tr>
+                            <td>{{panne.IdVehicule.id}}</td>
+                            <td>{{panne.TypePanne}}</td>
+                            <td>{{panne.StatusPanne}}</td>
+                            <td>{{panne.Remarque}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				</table>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		</div>
+	</div>
+
+
+{% endblock %}
+
+<style>
+
+	.styled-table {
+		border-collapse: collapse;
+		margin: 25px 0;
+		font-size: 0.9em;
+		font-family: sans-serif;
+		min-width: 400px;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	}
+
+	.styled-table thead tr {
+		background-color: #009879;
+		color: #ffffff;
+		text-align: left;
+	}
+	.styled-table th,
+	.styled-table td {
+		padding: 4px 7px;
+	}
+	.styled-table tbody tr {
+		border-bottom: 1px solid #dddddd;
+	}
+
+	.styled-table tbody tr:nth-of-type(even) {
+		background-color: #f3f3f3;
+	}
+
+	.styled-table tbody tr:last-of-type {
+		border-bottom: 2px solid #009879;
+	}
+	.styled-table tbody tr.active-row {
+		font-weight: bold;
+		color: #009879;
+	}
+</style>
+

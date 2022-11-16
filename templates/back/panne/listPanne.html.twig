@@ -1,0 +1,176 @@
+{% extends "back/base.html.twig" %}
+
+{% block linksHeader %}{% endblock %}
+
+{% block ContentTitle %}
+	Liste des vehicules en pannes
+{% endblock %}
+
+{% block Content %}
+
+	<div class="container-fluid">
+		<div class="d-flex justify-content-between mb-4">
+			<div>
+                <a href="{{path('ajouterPanne')}}" class="btn btn-primary">
+                <i class="fa fa-plus-circle mr-1" aria-hidden="true"></i>
+                Ajouter</a>
+				<a href="{{path('imprimerPanne')}}" class="btn btn-secondary">
+                <i class="fa fa-print" aria-hidden="true"></i>
+                Imprimer la liste</a>
+            </div>
+		</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="card card-primary">
+					<div class="card-header">
+						<h3 class="card-title">Table des Panne</h3>
+					</div>
+					<!-- /.card-header -->
+				<div class="card-body">
+
+			{% for message in app.flashes('info') %}
+				<div class="alert alert-info">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('error') %}
+				<div class="alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0">
+				<table class="table table-hover text-nowrap">
+					<thead>
+						<tr>
+							<th>ID Vehicule</th>
+							<th>Type Panne</th>
+                            <th>Status Panne</th>
+                            <th>Remarque</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for panne in pannes %}
+
+						<tr>
+                            <td>{{panne.IdVehicule.id}}</td>
+                            <td>{{panne.TypePanne}}</td>
+                            <td>{{panne.StatusPanne}}</td>
+                            <td>{{panne.Remarque}}</td>
+                            <td>
+								<a href="{{path('editPanne', {"idp":panne.id,"idv":panne.IdVehicule.id})}}" class="btn btn-warning">Editer Etat</a>
+								<a href="{{path('deletePanne', {"idp":panne.id,"idv":panne.IdVehicule.id})}}" class="btn btn-danger">Supprimer de la liste des pannes</a>
+								<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+							{#
+							<script>
+									function deleteP(id) {
+								$.ajax({
+								url: '/backHome/indexUser/deleteUser/' + id + '/',
+								method: 'post',
+								success: function (data) {
+								if (data == "ok") {
+								window.location.href = '/backHome/indexUser';;
+								} else {
+								alert("cannot do this opperation");
+								}
+
+								}
+								});
+								}
+								</script>
+							#}	
+
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- ./wrapper -->
+	<script>
+		$(function () { /* BOOTSTRAP SLIDER */
+$('.slider').bootstrapSlider()
+
+/* ION SLIDER */
+$('#range_1').ionRangeSlider({
+min: 0,
+max: 5000,
+from: 1000,
+to: 4000,
+type: 'double',
+step: 1,
+prefix: '$',
+prettify: false,
+hasGrid: true
+})
+$('#range_2').ionRangeSlider()
+
+$('#range_5').ionRangeSlider({
+min: 0,
+max: 10,
+type: 'single',
+step: 0.1,
+postfix: ' mm',
+prettify: false,
+hasGrid: true
+})
+$('#range_6').ionRangeSlider({
+min: -50,
+max: 50,
+from: 0,
+type: 'single',
+step: 1,
+postfix: '°',
+prettify: false,
+hasGrid: true
+})
+
+$('#range_4').ionRangeSlider({
+type: 'single',
+step: 100,
+postfix: ' light years',
+from: 55000,
+hideMinMax: true,
+hideFromTo: false
+})
+$('#range_3').ionRangeSlider({
+type: 'double',
+postfix: ' miles',
+step: 10000,
+from: 25000000,
+to: 35000000,
+onChange: function (obj) {
+var t = ''
+for (var prop in obj) {
+t += prop + ': ' + obj[prop] + '\r\n'
+}
+$('#result').html(t)
+},
+onLoad: function (obj) { //
+}
+})
+})
+	</script>
+{% endblock %}
+

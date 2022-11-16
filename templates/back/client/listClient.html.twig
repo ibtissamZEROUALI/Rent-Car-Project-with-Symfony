@@ -1,0 +1,127 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+    Liste des clients
+{% endblock %}
+
+
+{% block Content %}
+<div class="row">
+	<div class="col-12">
+<div class="d-flex justify-content-between mb-4">
+	<div>
+		<a href="{{path('createClient')}}" class="btn btn-primary">
+		<i class="fa fa-plus-circle mr-1" aria-hidden="true"></i>
+		Ajouter un client</a>
+		<a href="{{path('imprimerClient')}}" class="btn btn-secondary">
+		<i class="fa fa-print" aria-hidden="true"></i>
+		Imprimer la liste</a>
+	</div>
+
+</div>
+		<div class="card card-light">
+			<div class="card-header ">
+				<h3 class="card-title">Table des clients</h3>
+			</div>
+
+
+			{% for message in app.flashes('info') %}
+				<div class="alert alert-info">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('error') %}
+				<div class="alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0">
+				<table class="table table-hover text-nowrap" id="example1">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Premon</th>
+                            <th>Telephone</th>
+                            <th>Email</th>
+                            <th>Cin</th>
+                            <th>Adresse</th>
+                            <th>Sexe</th>
+                            <th>Date Naissance</th>
+                            <th class="text-danger">RED CLIENT</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+					{% for client in clients %}
+
+						<tr id="C-{{client.id}}">
+                            <td>{{client.Nom}}</td>
+                            <td>{{client.Prenom}}</td>
+                            <td>{{client.Phone}}</td>
+                            <td>{{client.Email}}</td>
+                            <td>{{client.Cin}}</td>
+                            <td>{{client.Adresse}}</td>
+                            <td>{{client.Sexe}}</td>
+                            <td>{{client.DateNaissance|date('Y-m-d H:i:s')}}</td>
+                            <td class="text-center">
+                            {% if client.permition == 1 %}
+                            <i class="fa fa-user-times" style="color: red" aria-hidden="true"></i>
+							{% elseif client.permition == 0 %}
+							<i class="fa fa-user" style="color : #DAA520" aria-hidden="true"></i>
+                            {% endif %}
+                            
+                            
+                            </td>
+
+							<td>
+								<a href="{{ path('editClient', {"id":client.id})}}" class="btn btn-success">Editer</a>
+								<a class="btn btn-danger text-white btn-sm " onclick="deleteP({{ client.id }})">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+	</div>
+</div>
+
+
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="{{ asset('bundle/ST/js/noty/packaged/jquery.noty.packaged.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
+
+
+<script>
+	function deleteP(id) {
+		$.ajax({
+		url: '/backHome/delete2/' + id ,
+		method: 'post',
+		success: function (data) {
+			if (data == "ok") {
+			//	window.location.href = '/backHome/listClient';
+			document.getElementById("C-"+id).innerHTML = "";
+			} else {
+				alert("cannot do this opperation");
+			}
+			}
+		});
+	}
+</script>
+
+
+
+{% endblock %}

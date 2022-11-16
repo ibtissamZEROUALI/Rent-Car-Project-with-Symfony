@@ -1,0 +1,91 @@
+{% block Content %}
+	<div class="row">
+<h1 align="center">Liste des utilisateurs</h1><hr>
+
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">Table des utilisateurs</h3>
+				</div>
+
+				<!-- /.card-header -->
+				<div class="card-body table-responsive p-0">
+					<table aligne="center" class="styled-table" >
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Premon</th>
+								<th>Email</th>
+								<th>Cin</th>
+								<th>Adresse</th>
+								<th>Sexe</th>
+								<th>Date Naissance</th>
+
+
+							</tr>
+						</thead>
+						<tbody>
+							{% for utilisateur in utilisateurs %}
+
+								<tr>
+									<td>{{utilisateur.Nom}}</td>
+									<td>{{utilisateur.Prenom}}</td>
+									<td>{{utilisateur.Email}}</td>
+									<td>{{utilisateur.Cin}}</td>
+									<td>{{utilisateur.Adresse}}</td>
+									<td>{{utilisateur.Sexe}}</td>
+									<td>{{utilisateur.DateNaissance|date('Y-m-d H:i:s')}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		</div>
+	</div>
+
+
+{% endblock %}
+		
+<style>
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+
+</style>
+

@@ -1,0 +1,109 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+    Liste des utilisateurs
+{% endblock %}
+
+
+{% block Content %}
+<div class="d-flex justify-content-between mb-4">
+	<div>
+<a href="{{path('imprimerUser')}}" class="btn btn-secondary">
+	<i class="fa fa-print" aria-hidden="true"></i>
+			Imprimer la liste</a>
+	</div>
+
+</div>
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+
+			<div class="card-header">
+				<h3 class="card-title">Table des utilisateurs</h3>
+			</div>
+
+
+			{% for message in app.flashes('info') %}
+				<div class="alert alert-info">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('error') %}
+				<div class="alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0">
+				<table class="table table-hover text-nowrap">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Premon</th>
+                            <th>Email</th>
+                            <th>Cin</th>
+                            <th>Adresse</th>
+                            <th>Sexe</th>
+                            <th>Date Naissance</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+					{% for utilisateur in utilisateurs %}
+
+						<tr>
+                            <td>{{utilisateur.Nom}}</td>
+                            <td>{{utilisateur.Prenom}}</td>
+                            <td>{{utilisateur.Email}}</td>
+                            <td>{{utilisateur.Cin}}</td>
+                            <td>{{utilisateur.Adresse}}</td>
+                            <td>{{utilisateur.Sexe}}</td>
+                            <td>{{utilisateur.DateNaissance|date('Y-m-d H:i:s')}}</td>
+
+							<td>
+								<a href="{{ path('editUser', {"id":utilisateur.id})}}" class="btn btn-info">Editer</a>
+								<a href="{{ path('deleteUser', {"id":utilisateur.id})}}" class="btn btn-danger deleteBtn">
+								Suprimmer
+								</a>
+								<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+							{#
+							<script>
+									function deleteP(id) {
+								$.ajax({
+								url: '/backHome/indexUser/deleteUser/' + id + '/',
+								method: 'post',
+								success: function (data) {
+								if (data == "ok") {
+								window.location.href = '/backHome/indexUser';;
+								} else {
+								alert("cannot do this opperation");
+								}
+
+								}
+								});
+								}
+								</script>
+							#}	
+
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+	</div>
+</div>
+
+
+{% endblock %}

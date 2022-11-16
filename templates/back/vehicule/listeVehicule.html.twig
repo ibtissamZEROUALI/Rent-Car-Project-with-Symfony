@@ -1,0 +1,60 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+<div class="w-4/5 m-auto text-center">
+	<div class="py-12 border-b border-gray-200">
+		<h1 class="text-6xl pt-12 pb-8">
+			Nos vehicules ({{ vehicules|length }})
+		</h1>
+
+		<span class="font-light text-gray-500 italic">
+			Infomations sur les vehicules
+		</span>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block Content %}
+<div class="mx-auto w-4/5 my-8">
+<a href="{{path('CreateVehicule')}}" class="btn btn-primary">
+
+		 <i class="fa fa-plus-circle mr-1" aria-hidden="true"></i>Ajouter un vehicule
+</a>
+<a href="{{path('imprimerVehicule')}}" class="btn btn-secondary">
+	<i class="fa fa-print" aria-hidden="true"></i>
+	Imprimer la liste</a>
+</div>
+<div
+	class="md:grid lg:grid-cols-3 gap-20 w-4/5 mx-auto py-15  ">
+	<!-- Review Item -->
+	{% for vehicule in vehicules %}
+		<div class="text-center pt-8 pb-4">
+			<div class="shadow-lg p-3 mb-5 bg-white rounded">
+				<img class="d-block w-100" src="{{asset('back/bundle/dist/img/1.jpg')}}" alt="First slide">
+			</div>
+
+			<h2 class="text-gray-700 font-bold text-3xl py-2">
+				{{vehicule.titre}}
+			</h2>
+			<P>
+			<a href="#" class="badge badge-warning">{{vehicule.StatusVehicule}}</a>
+							</P>
+			<span class="text-gray-500">
+
+				<p class="text-base text-gray-700 pt-4 pb-10 leading-8 font-ligh text-uppercaset">
+					{{vehicule.description}}
+				</p>
+
+				<a class="uppercase border border-warning-500 text-gray-600 text-lg py-4 px-12 
+				 rounded transition transition-all hover:bg-gray-800 hover:text-white" href="{{path('ShowVehicule', {"id":vehicule.id})}}">
+					Afficher plus..
+				</a>
+			</span>
+		</div>
+	{% endfor %}
+</div>
+
+
+{% endblock %}

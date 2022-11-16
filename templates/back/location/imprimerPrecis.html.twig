@@ -1,0 +1,88 @@
+{% block Content %}
+<h1 class="dark-color" align="center">Detail de la location</h1>
+<h3 class="theme-color lead" align="center">Vehicule
+	{{location.IdVehicule.IdMarque.Marque|capitalize}}
+	{{location.IdVehicule.Model}}
+	au client
+	{{location.IdClient.Nom|capitalize}}
+	{{location.IdClient.Prenom|capitalize}}
+</h3>
+
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card card-light">
+
+				<table class="table table-striped table-class styled-table" id="table-id" style="background-color:#FFFFE0;">
+					<thead class="col-sm-4 text-dark font-weight-bold" style="background-color:#BDB76B;color:#ffffff;">
+						<th>N° Location</th>
+						<th>User id</th>
+						<th>Client</th>
+						<th>CIN </th>
+						<th>Tel </th>
+						<th>Email</th>
+						<th>Info Vehicule</th>
+						<th>Periode</th>
+						<th>Total</th>
+					</thead>
+					<tbody>
+							<tr >
+								<td class="font-weight-bold text-primary">{{location.id}}</td>
+								<td>{{location.IdUser.id}} </td>
+								<td>{{location.IdClient.Nom|capitalize}} {{location.IdClient.Prenom|capitalize}}</td>
+								<td>{{location.IdClient.Cin}}</td>
+								<td>{{location.IdClient.Phone}}</td>
+								<td>{{location.IdClient.Email}}</td>
+								<td>{{location.IdVehicule.IdMarque.Marque|capitalize}} {{location.IdVehicule.Model}} {{location.IdVehicule.Matricul}}</td>
+								<td><b>Du</b>  {{location.FromDate|date('Y-m-d')}} <b>à</b> {{location.ToDate|date('Y-m-d')}}</td>
+								<td>{{location.Remise}}</td>
+							</tr>
+					</tbody>
+				</table>
+				<!--		Start Pagination -->
+
+			</div>
+		</div>
+		<!-- /.col -->
+	</div>
+
+	<style>
+
+		.styled-table {
+			border-collapse: collapse;
+			margin: 25px 0;
+			font-size: 0.9em;
+			font-family: sans-serif;
+			min-width: 400px;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+		}
+
+		.styled-table thead tr {
+			background-color: #009879;
+			color: #ffffff;
+			text-align: left;
+		}
+		.styled-table th,
+		.styled-table td {
+			padding: 4px 7px;
+		}
+		.styled-table tbody tr {
+			border-bottom: 1px solid #dddddd;
+		}
+
+		.styled-table tbody tr:nth-of-type(even) {
+			background-color: #f3f3f3;
+		}
+
+		.styled-table tbody tr:last-of-type {
+			border-bottom: 2px solid #009879;
+		}
+		.styled-table tbody tr.active-row {
+			font-weight: bold;
+			color: #009879;
+		}
+	</style>
+
+
+{% endblock %}
+

@@ -1,0 +1,121 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+	<div class="w-4/5 m-auto text-center">
+		<div class="py-12 border-b border-gray-200">
+			<h1 class="text-6xl">
+				Edit vehicule
+			</h1>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block Content %}
+	<!-- Main content -->
+	<section class="content">
+		<div class="container-fluid">
+			<div
+				class="row">
+				<!-- left column -->
+				<div
+					class="col">
+					<!-- general form elements -->
+					<div class="card card-warning">
+						<div class="card-header">
+							<h3 class="card-title">Edit Vehicule en Stock</h3>
+						</div>
+						<!-- /.card-header -->
+						<!-- form start -->
+						<form method="post"  enctype="multipart/form-data">
+							<div class="card-body">
+								<div class="row ">
+									<div class="col">
+										<div class="form-group">
+											<label for="Titre">Titre</label>
+											<input type="text" value="{{vehicule.Titre}}" required name="Titre" class="form-control" id="titre" placeholder="Enter un titre">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="Titre">Model Year</label>
+											<input type="text" value="{{vehicule.ModelYear}}" required name="ModelYear" class="form-control" onclick="ToNumeric()" id="titre" placeholder="Enter année">
+										</div>
+										<div class="form-group">
+											<label for="Marque">Marque</label>
+
+											<select class="form-control"  required name="Marque">
+												<option value="---">-------------</option>
+												{% for marque in marques %}
+													<option value="{{marque.id}}">{{marque.Marque}}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="Titre">Capacité</label>
+											<input type="text" value="{{vehicule.Capacity}}" required name="Capacite" class="form-control" onclick="ToNumeric()" placeholder="Enter capacite">
+										</div>
+										<div class="form-group">
+											<label for="Type">Type</label>
+											<select class="form-control"  required name="Type">
+												<option value="---">-------------</option>
+												{% for type in types %}
+													<option value="{{type.id}}">{{type.TypeVehicule}}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col">
+										<div class="form-group">
+											<label for="Description">Description</label>
+											<textarea type="text" value="{{vehicule.Description}}" required name="Description" class="form-control" id="Description" placeholder="Description..."></textarea>
+										</div>
+										<div class="form-group">
+											<label for="PrixDay">Prix par jour</label>
+											<input type="text" value="{{vehicule.PrixDay}}" required name="PrixDay" placeholder="MAD" onclick="ToNumeric()" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="Statut">Statut</label>
+											<select class="form-control" required name="Statut">
+												<option value="---">-------------</option>
+												<option value="Disponible">Disponible</option>
+												<option value="En location">En location</option>
+												<option value="Réservé">Réservé</option>
+												<option value="En panne">En panne</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="DateRegistration">Date d'enregistrement</label>
+											<input type="date" required name="DateEnregistrement" class="form-control">
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button type="submit" class="btn btn-primary text-black">Submit</button>
+							</div>
+						</form>
+					</div>
+					<!-- /.card -->
+
+				</div>
+				<!--/.col (left) -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container-fluid -->
+	</section>
+
+
+{% endblock %}
+

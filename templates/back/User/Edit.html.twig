@@ -1,0 +1,119 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+	Edit un utilisateur
+{% endblock %}
+
+
+{% block Content %}
+	<section class="content">
+		<div class="container-fluid">
+<div class="row justify-content-center">
+	<div class="col-6">
+		<div class="form-group">
+			{% if erreur is defined %}
+				<div class="alert alert-danger alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<h4>
+						<i class="icon fa fa-ban"></i>
+						Erreur !!</h4>
+					{{ erreur }}
+				</div>
+			{% endif %}
+			{% if success is defined %}
+				<div class="alert alert-success alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<h4>
+						<i class="icon fa fa-check"></i>
+						Succés
+					</h4>
+					{{ success }}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+			<div
+				class="row">
+				<!-- left column -->
+				<div
+					class="col-md-12">
+					<!-- jquery validation -->
+					<div class="card card-primary">
+						<div class="card-header">
+							<h3 class="card-title">Nouveau
+								<small>utilisateur</small>
+							</h3>
+						</div>
+						<!-- /.card-header -->
+						<!-- form start -->
+						<form id="quickForm" method="post">
+							<div class="card-body">
+								<div class="form-group">
+									<label for="Nom">Nom</label>
+									<input type="text" name="Nom" class="form-control" value="{{utilisateur.Nom}}" id="Nom" required placeholder="Entrer Nom">
+
+								</div>
+								<div class="form-group">
+									<label for="Prenom">Prenom</label>
+									<input type="text" name="Prenom" class="form-control" value="{{utilisateur.Prenom}}" id="Prenom" required placeholder="Entrer Prenom">
+
+								</div>
+								<div class="form-group">
+									<label for="Email">Email</label>
+									<input type="email" name="Email" class="form-control"  value="{{utilisateur.Email}}" id="Email" required placeholder="Entrer Email">
+								</div>
+								<div class="form-group">
+									<label for="Password">Password</label>
+									<input type="password" name="Password" class="form-control" value="{{utilisateur.Password}}" id="Password" required placeholder="Entrer Password">
+
+								</div>
+								<div class="form-group">
+									<label for="Cin">Cin</label>
+									<input type="text" name="Cin" class="form-control" value="{{utilisateur.Cin}}" id="Cin" required placeholder="Entrer Cin">
+
+
+								</div>
+								<div class="form-group">
+									<label for="Adresse">Adresse</label>
+									<input type="text" name="Adresse" class="form-control" value="{{utilisateur.Adresse}}" id="Adresse" required placeholder="Entrer Adresse">
+
+								</div>
+								<div class="form-group">
+									<label for="Sexe">Sexe</label>
+									<select class="form-control" name="Sexe" value="{{utilisateur.Sexe}}">
+										<option value="Feminin">Feminin</option>
+										<option value="Masculin">Masculin</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label for="Photo">Photo</label>
+									<input type="file" name="Photo" class="form-control"  placeholder="Entrer nouvelle photo">
+								</div>
+							</div>
+							<!-- /.card-body -->
+							<div class="card-footer">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</form>
+					</div>
+					<!-- /.card -->
+				</div>
+				<!--/.col (left) -->
+				<!-- right column -->
+				<div class="col-md-6"></div>
+				<!--/.col (right) -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container-fluvalue="" id -->
+	</section>
+<script src="{{asset('loginClient/js/jquery.min.js')}}"></script>
+<script src="{{asset('loginClient/js/popper.js')}}"></script>
+<script src="{{asset('loginClient/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('loginClient/js/main.js')}}"></script>
+
+{% endblock %}

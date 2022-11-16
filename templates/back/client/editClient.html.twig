@@ -1,0 +1,124 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+	Ajouter un client à la liste
+{% endblock %}
+
+
+{% block Content %}
+	<section class="content">
+		<div class="container-fluid">
+
+					<div class="card ">
+						<div class="card-header bg-light">
+							<h3 class="card-title">Editer les information de 
+								<span class="font-bold text-capitalize tex">
+								{{client.Nom}}  {{client.Prenom}}
+								</span>
+							</h3>
+						</div>
+						<!-- /.card-header -->
+						<!-- form start -->
+						<form id="quickForm" method="post">
+							<div class="card-body">
+							<div class="form-group">
+								{% if erreur is defined %}
+									<div class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+										<h4>
+											<i class="icon fa fa-ban"></i>
+											Erreur !!</h4>
+										{{ erreur }}
+									</div>
+								{% endif %}
+								{% if success is defined %}
+									<div class="alert alert-success alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+										<h4>
+											<i class="icon fa fa-check"></i>
+											Succés
+										</h4>
+										{{ success }}
+									</div>
+								{% endif %}
+							</div>
+								<div class="form-group">
+									<label for="Nom">Nom</label>
+									<input type="text" name="Nom" class="form-control" required id="Nom" value="{{client.Nom}}">
+								</div>
+								<div class="form-group">
+									<label for="Prenom">Prenom</label>
+									<input type="text" name="Prenom" class="form-control" required id="Prenom" value="{{client.Prenom}}">
+								</div>
+								<div class="form-group">
+									<label for="Email">Telephone</label>
+									<input type="tel" name="telephone" class="form-control" required id="Email" value="{{client.Phone}}">
+								</div>
+								<div class="form-group">
+									<label for="Email">Email</label>
+									<input type="email" name="Email" class="form-control" required id="Email" value="{{client.Email}}">
+								</div>
+								<div class="form-group">
+									<label for="Password">Password</label>
+									<input type="password" name="Password" class="form-control" required id="Password" value="{{client.Password}}">
+								</div>
+								<div class="form-group">
+									<label for="Cin">Cin</label>
+									<input type="text" name="Cin" class="form-control" required id="Cin" value="{{client.Cin}}">
+								</div>
+								<div class="form-group">
+									<label for="Adresse">Adresse</label>
+									<input type="text" name="Adresse" class="form-control" required id="Adresse" value="{{client.Adresse}}">
+								</div>
+								<div class="form-group">
+									<label for="DateNaissance">Date Naissance</label>
+									<input type="Date" name="DateNaissance" class="form-control" required id="DateNaissance" value="{{client.DateNaissance|date('Y-m-d H:i:s')}}">
+								</div>
+								<div class="form-group">
+									<label for="Sexe">Sexe</label>
+									<select class="form-control" name="Sexe">
+										<option value="Feminin">Feminin</option>
+										<option value="Masculin">Masculin</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="permition" class="text-danger">
+										RED client</label>
+									<select class="form-control" name="permition">
+										<option value="0">NO</option>
+										<option value="1">YES</option>
+									</select>
+								</div>
+								<!--<div class="form-group">
+																								<label for="Photo">Photo</label>
+																								<input type="file" name="Photo" class="form-control-file" id="Photo">
+																							</div>-->
+
+							</div>
+
+
+							<!-- /.card-body -->
+							<div class="card-footer">
+								<button type="submit" class="btn btn-primary text-black">Editer</button>
+							</div>
+						</form>
+					</div>
+					<!-- /.card -->
+				</div>
+				<!--/.col (left) -->
+				<!-- right column -->
+				<div class="col-md-6"></div>
+				<!--/.col (right) -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container-fluid -->
+	</section>
+<script src="{{asset('loginClient/js/jquery.min.js')}}"></script>
+<script src="{{asset('loginClient/js/popper.js')}}"></script>
+<script src="{{asset('loginClient/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('loginClient/js/main.js')}}"></script>
+
+{% endblock %}
+

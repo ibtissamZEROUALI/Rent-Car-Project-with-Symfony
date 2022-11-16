@@ -1,0 +1,77 @@
+{% extends "back/base.html.twig" %}
+
+
+{% block ContentTitle %}
+	<div class="text-danger">Liste noir des clients</div> 
+{% endblock %}
+
+
+{% block Content %}
+	<div class="row">
+	<div class="d-flex justify-content-between mb-4">
+		<div>
+			<a href="{{path('imprimerNoir')}}" class="btn btn-secondary">
+				<i class="fa fa-print" aria-hidden="true"></i>
+				Imprimer la liste noir</a>
+		</div>
+	</div>
+
+		<div class="col-12">
+			<div class="card card-light">
+				<div class="card-header ">
+					<h3 class="card-title">Table des <span class="text-danger"> RED CLIENTS</span> </h3>
+				</div>
+                
+				<!-- /.card-header -->
+				<div class="card-body table-responsive p-0">
+					<table class="table table-hover text-nowrap">
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Premon</th>
+								<th>Telephone</th>
+								<th>Email</th>
+								<th>Cin</th>
+								<th class="text-danger">RED CLIENT</th>
+
+
+							</tr>
+						</thead>
+						<tbody>
+							{% for client in clients %}
+                                {% if client.permition == 1 %}
+								<tr>
+									<td>{{client.Nom}}</td>
+									<td>{{client.Prenom}}</td>
+									<td>{{client.Phone}}</td>
+									<td>{{client.Email}}</td>
+									<td>{{client.Cin}}</td>
+									<td class="text-center">
+										{% if client.permition == 1 %}
+											<i class="fa fa-user-times" style="color: red" aria-hidden="true"></i>
+										{% elseif client.permition == 0 %}
+											<i class="fa fa-user" style="color : #DAA520" aria-hidden="true"></i>
+										{% endif %}
+									</td>
+
+									<td>
+										<a href="{{ path('editListNoirPermition', {"id":client.id})}}" class="btn btn-warning">Editer la permition</a>
+										<a href="{{ path('deleteListNoir', {"id":client.id})}}" class="btn btn-danger deleteBtn">
+											Suprimmer definitivement 
+										</a>
+									</td>
+								</tr>
+                                {% endif %}
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		</div>
+	</div>
+
+
+{% endblock %}
+

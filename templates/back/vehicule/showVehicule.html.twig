@@ -1,0 +1,100 @@
+{% extends "back/base.html.twig" %}
+
+{% block ContentTitle %}
+	<h1 class="pt-20 sm:text-5xl md:text-7xl text-4xl font-bold text-center font-bold">
+		Affichage complet des information de la
+		<span class="text-info font-normal">{{ vehicule.titre }}</span>
+	</h1>
+
+	<div class="py-10 text-center">
+		<div class="inline-block sm:pt-1">
+			<h2 class="font-light">
+				Chez agence ITSSAM
+			</h2>
+		</div>
+	</div>
+
+
+{% endblock %}
+
+{% block Content %}
+<div class="row">
+	<div class="col-12">
+
+<div class="sm:w-3/5 w-4/5 mx-auto text-center">
+	<div class="container-fluid">
+		<div class="card-header" style="">
+			<div class="card-body">
+				<p class="card-text"></p>
+					<div class="row">
+				<div id="carouselExampleIndicators" class="carousel slide accent-blue" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="carousel-item active shadow-lg p-3 mb-5 bg-white rounded">
+							<img class="d-block w-100" src="{{asset('back/bundle/dist/img/1.jpg')}}" alt="First slide">
+						</div>
+						<div class="carousel-item shadow-lg p-3 mb-5 bg-white rounded ">
+							<img class="d-block w-100" src="{{asset('back/bundle/dist/img/2.jpg')}}" alt="Second slide">
+						</div>
+						<div class="carousel-item shadow-lg p-3 mb-5 bg-white rounded">
+							<img class="d-block w-100" src="{{asset('back/bundle/dist/img/3.jpg')}}" alt="Third slide">
+						</div>
+					</div>
+					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+
+				<div class="row">
+					<div class="col-sm-4 text-dark font-weight-bold">
+						<div class="row">ID Vehicule :</div>
+						<div class="row">Description :</div>
+						<div class="row">Marque :</div>
+						<div class="row">Type :</div>
+						<div class="row">Capacité :</div>
+						<div class="row">Model :</div>
+						<div class="row">Prix par jour :</div>
+						<div class="row">Statut :</div>
+						<div class="row">Date d'enregistrement :</div>
+					</div>
+					<div class="col-sm-8 font-weight-normal">
+						<div class="row text-blue text-bold ">{{vehicule.id}}</div>
+						<div class="row">{{vehicule.description}}</div>
+						<div class="row">{{marque.Marque}}</div>
+						<div class="row">{{type.TypeVehicule}}</div>
+						<div class="row">{{vehicule.Capacity}}</div>
+						<div class="row">{{vehicule.ModelYear}}</div>
+						<div class="row">{{vehicule.PrixDay}}</div>
+						<div class="row">{{vehicule.StatusVehicule}}</div>
+						<div class="row">{{vehicule.DateRegistration|date('Y-m-d H:i:s')}}</div>
+					</div>			
+				</div>
+				<div class="row bg-light mt-4">
+					<a href="{{path('EditVehicule', {"id":vehicule.id})}}" class="bg-green-500 font-bold py-2 px-4 rounded transition-all hover:bg-green-300">
+						Edit vehicule
+					</a>
+					<a href="{{path('DeleteVehicule', {"id":vehicule.id})}}" class="bg-red-500 font-bold py-2 px-4 ml-6 rounded transition-all hover:bg-red-300">
+						Delete vehicule
+					</a>
+				</div>
+
+
+			</div>
+		</div>
+		
+</div>
+     
+		
+	</div>
+{% endblock %}
+
